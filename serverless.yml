@@ -1,0 +1,41 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+custom:
+  route: FGBR
+  stop_id: 600018
+  stop_verbose_name: Central station, platform 1
+
+service: translink-timetable-${self:custom.route}-${self:custom.stop_id}
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  profile: ${file(./env.json):aws_profile}
+  region: ap-southeast-2
+  memorySize: 192
+  environment:
+    TZ: Australia/Brisbane
+    slack_webhook: ${file(./env.json):slack_webhook}
+    route: ${self:custom.route}
+    stop_id: ${self:custom.stop_id}
+    stop_name: ${self:custom.stop_verbose_name}
+
+functions:
+  webhook:
+    handler: handler.webhook
+    events:
+      # - schedule: rate(5 minutes)
+      - http:
+          path: /
+          method: get
