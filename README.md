@@ -16,6 +16,13 @@ Follow Serverless guide to setup your aws credentials.
 
 Change `env.json.dist` to `env.json` and fill up your slack webhook. You could follow this guide to quickly create a slack app in your workspace that accepts webhook.
 
+Configure the `stop_id` (it could be a bus stop, train station etc.), `route`, `stop_verbose_name` in `serverless.yml`, you could easily find the `stop_id` from google maps. Note, only `stop_id` is the required field.
+
+```
+route: 138
+stop_id: 5840
+stop_verbose_name: Calam Rd near Lear St
+```
 
 Inside the project, run:
 ```
@@ -23,3 +30,15 @@ yarn
 
 sls deploy
 ```
+
+Then Serverless framework will create the function and returns the URL to you. 
+
+e.g. it will output something like this:
+
+```
+endpoints:
+  GET - https://xxxxxxxxx.execute-api.ap-southeast-2.amazonaws.com/dev/
+```
+
+Click the endpoint and you should see the upcoming buses/trains in the configured `stop_id`, and you will receive a slack message too.
+
