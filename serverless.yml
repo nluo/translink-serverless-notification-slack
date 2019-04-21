@@ -35,7 +35,7 @@ functions:
   webhook:
     handler: handler.webhook
     events:
-      - schedule: rate(5 minutes)
+      - schedule: cron(0/5 8-17 ? * MON-FRI *)
       - http:
           path: /
           method: get
