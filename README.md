@@ -8,8 +8,18 @@ TransLink does provide a mobile app to track to bus of the stop, but the problem
 
 Fortunately, TransLink has provided a real-time transit information in n Google's Protobuf format, as per the GTFS real-time specification.
 
-So this little lambda function consumes the realtime data, and sends the notification to slack through webhook.
+So this little lambda function consumes the real-time data, and sends the notification to slack through webhook.
 
 ## Get Start
 
+Follow Serverless guide to setup your aws credentials.
 
+Change `env.json.dist` to `env.json` and fill up your slack webhook. You could follow this guide to quickly create a slack app in your workspace that accepts webhook.
+
+
+Inside the project, run:
+```
+yarn
+
+sls deploy
+```
