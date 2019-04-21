@@ -6,3 +6,10 @@ I commute to work by public transport (Bus) daily. The issue is the bus does not
 
 TransLink does provide a mobile app to track to bus of the stop, but the problem is, the app is quite hard to use and you have to every time open it and select the bus stop to see the information.
 
+Fortunately, TransLink has provided a real-time transit information in n Google's Protobuf format, as per the GTFS real-time specification.
+
+So this little lambda function consumes the realtime data, and sends the notification to slack through webhook.
+
+##Get Start
+
+

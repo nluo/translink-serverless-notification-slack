@@ -4,7 +4,7 @@ const request = require("request");
 const url = "https://gtfsrt.api.translink.com.au/Feed/SEQ";
 
 const constructSlackText = (displayText, stopInfo) => {
-  return `${displayText}, upcoming is: ` + '```' + `${JSON.stringify(stopInfo)}` + '```';
+  return `${displayText}, upcoming is: ` + '```' + `${JSON.stringify(stopInfo, null, 4)}` + '```';
 }
 
 const postToSlack = displayText => {
@@ -121,14 +121,4 @@ module.exports.webhook = async () => {
       }
     });
   });
-
-  // return {
-  //   statusCode: 200,
-  //   body: JSON.stringify({
-  //     message: "hello world"
-  //   })
-  // };
-
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
 };

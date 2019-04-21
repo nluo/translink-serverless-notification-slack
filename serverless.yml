@@ -12,9 +12,9 @@
 # Happy Coding!
 
 custom:
-  route: FGBR
-  stop_id: 600018
-  stop_verbose_name: Central station, platform 1
+  route: 138
+  stop_id: 5840
+  stop_verbose_name: Calam Rd near Lear St
 
 service: translink-timetable-${self:custom.route}-${self:custom.stop_id}
 
@@ -35,7 +35,7 @@ functions:
   webhook:
     handler: handler.webhook
     events:
-      # - schedule: rate(5 minutes)
+      - schedule: rate(5 minutes)
       - http:
           path: /
           method: get
