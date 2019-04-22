@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "postinstall": "patch-package"
+  },
   "dependencies": {
     "gtfs-realtime-bindings": "^0.0.4",
+    "patch-package": "^6.1.2",
     "request": "^2.88.0"
   },
   "devDependencies": {

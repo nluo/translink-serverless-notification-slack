@@ -1,0 +1,15 @@
+diff --git a/node_modules/gtfs-realtime-bindings/gtfs-realtime.js b/node_modules/gtfs-realtime-bindings/gtfs-realtime.js
+index bd110a4..d9afbb4 100644
+--- a/node_modules/gtfs-realtime-bindings/gtfs-realtime.js
++++ b/node_modules/gtfs-realtime-bindings/gtfs-realtime.js
+@@ -746,6 +746,10 @@ module.exports = require("protobufjs").newBuilder().import({
+                         {
+                             "name": "CANCELED",
+                             "id": 3
++                        },
++                        {
++                            "name": "REPLACEMENT",
++                            "id": 5
+                         }
+                     ],
+                     "options": {}
