@@ -4,7 +4,8 @@ const request = require("request");
 const url = "https://gtfsrt.api.translink.com.au/Feed/SEQ";
 
 const constructSlackText = (displayText, stopInfo) => {
-  return `${displayText}, upcoming is: ` + '```' + `${JSON.stringify(stopInfo, null, 4)}` + '```';
+  // return `${displayText}, upcoming is: ` + '```' + `${JSON.stringify(stopInfo, null, 4)}` + '```';
+  return displayText;
 }
 
 const postToSlack = displayText => {
@@ -92,7 +93,25 @@ module.exports.webhook = async () => {
           })
           .filter(s => s)
           .filter(s => {
-            return s.arrivalTime.getTime() - now.getTime() >= 0
+
+            return s.arrivalTime.getTime() - now.getTime() >= 0 
+          })
+          .filter(s => {
+            
+            if (!route) {
+              return true;
+            }
+            
+            const busRoute = s.routeId.split("-")[0];
+            
+            console.log('the bus route is ', busRoute);
+
+            if (!busRoute) {
+              return true;
+            }
+
+            return route == busRoute;
+
           })
           .sort((s1, s2) => s1.arrivalTime - s2.arrivalTime)
 

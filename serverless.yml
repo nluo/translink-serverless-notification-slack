@@ -13,8 +13,8 @@
 
 custom:
   route: 138
-  stop_id: 5840
-  stop_verbose_name: Calam Rd near Lear St
+  stop_id: 5893
+  stop_verbose_name: Compton Rd near Chateau St, stop 29
 
 service: translink-timetable-${self:custom.route}-${self:custom.stop_id}
 
@@ -35,12 +35,9 @@ functions:
   webhook:
     handler: handler.webhook
     events:
-      # - schedule: 
-          # rate: cron(0/5 8-23 * * MON-FRI *)
-          # timezone: Australia/Brisbane
+      - schedule: 
+          rate: cron(*/2 21-0 ? * SUN-THU *)
       - http:
           path: /
           method: get
 
-plugins:
-  - serverless-local-schedule
