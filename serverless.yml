@@ -35,7 +35,12 @@ functions:
   webhook:
     handler: handler.webhook
     events:
-      - schedule: cron(0/5 8-17 ? * MON-FRI *)
+      # - schedule: 
+          # rate: cron(0/5 8-23 * * MON-FRI *)
+          # timezone: Australia/Brisbane
       - http:
           path: /
           method: get
+
+plugins:
+  - serverless-local-schedule

@@ -6,5 +6,8 @@
   "dependencies": {
     "gtfs-realtime-bindings": "^0.0.4",
     "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "serverless-local-schedule": "^0.1.6"
   }
 }
