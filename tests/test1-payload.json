@@ -1,0 +1,24 @@
+{
+  "id": "TU-12654839-BT 18_19-JAN_HUNO-Weekday-01",
+  "is_deleted": false,
+  "trip_update": {
+    "trip": {
+      "trip_id": "12654839-BT 18_19-JAN_HUNO-Weekday-01",
+      "route_id": "125-1232",
+      "direction_id": null,
+      "start_time": "20:49:00",
+      "start_date": "20190423",
+      "schedule_relationship": 3
+    },
+    "vehicle": {
+      "id": "-1366625436_1463",
+      "label": null,
+      "license_plate": null
+    },
+    "stop_time_update": [],
+    "timestamp": { "low": 1556012967, "high": 0, "unsigned": true },
+    "delay": null
+  },
+  "vehicle": null,
+  "alert": null
+}
