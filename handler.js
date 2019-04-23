@@ -73,7 +73,7 @@ module.exports.webhook = async () => {
               const stop = stop_time_update.find(s => s["stop_id"] == stop_id);
 
               if (stop) {
-                console.log(JSON.stringify(stop));
+
                 let t;
                 if (stop.arrival) {
                   t = new Date(stop.arrival.time.low * 1000);
@@ -83,8 +83,8 @@ module.exports.webhook = async () => {
 
                 const info = {
                   routeId: entity.trip_update.trip.route_id,
-                  arrivalTime: t
-                  // meta: entity
+                  arrivalTime: t,
+                  trip: {...trip},
                 };
                 return info;
               }
@@ -124,7 +124,7 @@ module.exports.webhook = async () => {
 
         const displayText = `The next Route:${busRoute} is coming to ${
           stopName ? stopName : "stop"
-        } in ${busTimeTableText}`;
+        } in ${busTimeTableText},  Scheduled Time: ${temp.trip.start_time}`;
 
         await postToSlack(
           constructSlackText(displayText, localTimezoneStopInfo)

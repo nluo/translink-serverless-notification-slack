@@ -36,7 +36,7 @@ functions:
     handler: handler.webhook
     events:
       - schedule: 
-          rate: cron(*/2 21-0 ? * SUN-THU *)
+          rate: cron(*/2 22-0 ? * SUN-THU *)
       - http:
           path: /
           method: get
