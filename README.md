@@ -2,19 +2,19 @@ A lambda function to subscribe to the Queensland TransLink Real-Time data and se
 
 ## Motivation
 
-I commute to work by public transport (Bus) daily. The issue is the bus does not come very on time. For example, I usually take the scheduled 8:44am bus it rarely comes on time (either 3-4 minutes earlier or later).
+I commute to work by public transport (Bus) on weekdays. The issue is the bus does not come on time. For example, I usually take the scheduled 8:44 am bus it rarely comes on time (almost always a few minutes early/late).
 
 TransLink does provide a mobile app to track to bus of the stop, but the problem is, the app is quite hard to use and you have to every time open it and select the bus stop to see the information.
 
-Fortunately, TransLink has provided a real-time transit information in n Google's Protobuf format, as per the GTFS real-time specification.
+Fortunately, [TransLink](https://gtfsrt.api.translink.com.au/) has provided a real-time transit information in n Google's Protobuf format, as per the GTFS real-time specification.
 
-So this little lambda function consumes the real-time data, and sends the notification to slack through webhook.
+So this little lambda function consumes the real-time data provided by TransLink, and sends the notification of the route you would like to know to slack through webhook.
 
-## Get Start
+## Deploy your lambda function
 
-Follow Serverless guide to setup your aws credentials.
+Follow [Serverless guide](https://serverless.com/framework/docs/providers/aws/guide/credentials/) to setup your aws credentials. It's actually quite simple: basically in Mac/Linux/Windows, you need to have your `access_key` and `access_secret` in `~/.aws/credentials` file.
 
-Change `env.json.dist` to `env.json` and fill up your slack webhook. You could follow this guide to quickly create a slack app in your workspace that accepts webhook.
+Then, change `env.json.dist` to `env.json` and fill up your slack webhook. (You could follow this [guide](https://api.slack.com/slack-apps) to quickly create a slack app in your workspace that accepts webhook)
 
 Configure the `stop_id` (it could be a bus stop, train station etc.), `route`, `stop_verbose_name` in `serverless.yml`, you could easily find the `stop_id` from google maps. Note, only `stop_id` is the required field.
 
