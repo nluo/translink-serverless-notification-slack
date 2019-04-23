@@ -12,25 +12,18 @@ const postToSlack = displayText => {
   const { slack_webhook } = process.env;
 
   if (!slack_webhook || slack_webhook === "") {
-    return resolve();
+    return;
   }
 
   const options = {
-    uri: slack_webhook,
+    url: slack_webhook,
     method: "POST",
-    json: {
+    data: {
       text: displayText
     }
   };
 
-  return new Promise((resolve, reject) => {
-    return request(options, error => {
-      if (error) {
-        return reject(error);
-      }
-      return resolve();
-    });
-  });
+  return axios(options)
 };
 
 const calculateMinutesBetweenNow = endDate => {
@@ -85,7 +78,7 @@ module.exports.webhook = async () => {
                 if (stop.arrival) {
                   t = new Date(stop.arrival.time.low * 1000);
                 } else {
-                  t = new Date(stop.arrival.time.low * 1000);
+                  t = new Date(stop.departure.time.low * 1000);
                 }
 
                 const info = {
@@ -100,15 +93,11 @@ module.exports.webhook = async () => {
         })
         .filter(s => s)
         .filter(s => {
-          console.log("route is ", route);
-
-          if (!route || route === "") {
+          if (route === 'all') {
             return true;
           }
 
           const busRoute = s.routeId.split("-")[0];
-
-          console.log("the bus route is ", busRoute);
 
           if (!busRoute) {
             return true;
@@ -128,8 +117,6 @@ module.exports.webhook = async () => {
         };
       });
 
-      console.log("after transformation, stop info is ", stopInfo);
-
       if (stopInfo.length) {
         const temp = stopInfo[0];
         const busTimeTableText = calculateMinutesBetweenNow(temp.arrivalTime);
@@ -144,10 +131,10 @@ module.exports.webhook = async () => {
         );
       }
 
-      return resolve({
+      return {
         statusCode: 200,
         body: JSON.stringify(localTimezoneStopInfo)
-      });
+      };
     }
   } catch (error) {
     throw error;

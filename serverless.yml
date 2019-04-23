@@ -16,7 +16,7 @@ custom:
   stop_id: 5893
   stop_verbose_name: Compton Rd near Chateau St, stop 29
 
-service: translink-timetable-${self:custom.route}-${self:custom.stop_id}
+service: translink-timetable-${self:custom.route, 'all'}-${self:custom.stop_id}
 
 provider:
   name: aws
