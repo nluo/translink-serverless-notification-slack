@@ -10,7 +10,7 @@ Fortunately, [TransLink](https://gtfsrt.api.translink.com.au/) has provided a re
 
 So this little lambda function consumes the real-time data provided by TransLink, and sends the notification of the route you would like to know to slack through webhook.
 
-![demo](https://dm2305files.storage.live.com/y4m8T2wzT5VyKY6M-aSaBux15_Q_TQh31nLjXEibRJSBr26DNVAy9i92sxUOLKMdKV-_vAyCC85DtFT3-alCFvfOqKBxBBwPbFhSF4cJbgtjsLfLY7mZPN21gnOUwn2TkjeoFEmhaTefSEuXnoAefDs6Mk61fcMpZInnNL2yink7WrMiUQvAIYYz4y3rgGi7AIcScbIiTT0kKshxDNpgmpPVQ/Image%20from%20iOS.jpg?psid=1&width=85&height=183)
+![demo](https://lh3.googleusercontent.com/mcu4fKfM1We5oKwpr3hap8HFHmwyAXnUZ2Kx1kLsInCI0OvAPvlnbw0Fy7Bkd0VHPK-9HeLERjobx0WCacTBA2FeJ7E6oEvWIQ3ZnWtzPYFmuEpoX5P4r6ovV8EOeYsqEhib_PWH6BE=w375-h812-no)
 
 ## Deploy your lambda function
 
