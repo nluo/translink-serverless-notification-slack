@@ -1,3 +1,5 @@
+## What
+
 A lambda function to subscribe to the Queensland TransLink Real-Time data and send notifications to the route and stop that you care about to Slack.
 
 ## Motivation
