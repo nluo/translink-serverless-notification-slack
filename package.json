@@ -7,7 +7,7 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "gtfs-realtime-bindings": "^0.0.4",
     "patch-package": "^6.1.2",
     "request": "^2.88.0"
